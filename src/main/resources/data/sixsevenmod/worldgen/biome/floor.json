@@ -6,7 +6,20 @@
     "sky_color": 7907327,
     "fog_color": 12638463,
     "water_color": 4159204,
-    "water_fog_color": 329011
+    "water_fog_color": 329011,
+    "music": [
+      {
+        "weight": 1,
+        "data": {
+          "sound": {
+            "sound_id": "sixsevenmod:dootdoot"
+          },
+          "min_delay": 6,
+          "max_delay": 7,
+          "replace_current_music": true
+        }
+      }
+    ]
   },
   "spawners": {},
   "spawn_costs": {},
@@ -16,9 +29,7 @@
     [],
     [],
     [],
-    [
-      "sixsevenmod:basketball_court"
-    ],
+    [],
     [],
     [],
     [],

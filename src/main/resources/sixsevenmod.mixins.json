@@ -3,7 +3,9 @@
 	"package": "ca.travisfriesen.sixsevenmod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-      "SixSevenMixin"
+      "SixSevenMixin",
+      "ItemMaxStackMixin",
+      "ItemDefaultStackMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

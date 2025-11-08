@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "67mod",
+	"id": "sixsevenmod",
 	"version": "${version}",
 	"name": "6-7 Mod",
 	"description": "This mod add the 6-7 dimension to Minecraft.",
@@ -11,10 +11,10 @@
         "GitHub Copilot"
 	],
 	"contact": {
-		"homepage": "https://en.wikipedia.org/wiki/6-7_(meme)",
+		"homepage": "https://en.wikipedia.org/wiki/6-7_(meme)"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/67mod/icon.png",
+	"icon": "assets/sixsevenmod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -25,9 +25,9 @@
 		]
 	},
 	"mixins": [
-		"67mod.mixins.json",
+		"sixsevenmod.mixins.json",
 		{
-			"config": "67mod.client.mixins.json",
+			"config": "sixsevenmod.client.mixins.json",
 			"environment": "client"
 		}
 	],

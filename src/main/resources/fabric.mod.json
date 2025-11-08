@@ -14,14 +14,14 @@
 		"homepage": "https://en.wikipedia.org/wiki/6-7_(meme)",
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/67mod/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "ca.travisfriesen.SixSevenMod"
+          "ca.travisfriesen.sixsevenmod.SixSevenMod"
 		],
 		"client": [
-          "ca.travisfriesen.SixSevenModClient"
+          "ca.travisfriesen.sixsevenmod.SixSevenModClient"
 		]
 	},
 	"mixins": [

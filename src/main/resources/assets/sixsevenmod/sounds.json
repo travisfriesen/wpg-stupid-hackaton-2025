@@ -1,0 +1,10 @@
+{
+  "dootdoot": {
+    "sounds": [
+      {
+        "name": "sixsevenmod:dootdoot",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "separation": 6,
+    "spacing": 7,
+    "salt": 1646207470
+  },
+  "structures": [
+    {
+      "structure": "sixsevenmod:basketball_court",
+      "weight": 1
+    }
+  ]
+}

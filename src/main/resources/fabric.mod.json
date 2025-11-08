@@ -1,31 +1,33 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "67mod",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "6-7 Mod",
+	"description": "This mod add the 6-7 dimension to Minecraft.",
 	"authors": [
-		"Me!"
+		"Jordon",
+        "Minh",
+        "Travis",
+        "GitHub Copilot"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://en.wikipedia.org/wiki/6-7_(meme)",
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+          "ca.travisfriesen.SixSevenMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+          "ca.travisfriesen.SixSevenModClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"67mod.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "67mod.client.mixins.json",
 			"environment": "client"
 		}
 	],

@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"package": "com.example.mixin",
+	"package": "ca.travisfriesen.sixsevenmod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+      "SixSevenMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

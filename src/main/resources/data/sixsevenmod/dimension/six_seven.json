@@ -1,0 +1,12 @@
+{
+  "type": "sixsevenmod:six_seven_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "sixsevenmod:six_seven",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "sixsevenmod:floor"
+    }
+
+  }
+}

@@ -1,5 +1,6 @@
 package ca.travisfriesen.sixsevenmod;
 
+import ca.travisfriesen.sixsevenmod.mob.SixSevenMobs;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -20,5 +21,6 @@ public class SixSevenMod implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+        SixSevenMobs.registerSixSevenMobs();
 	}
 }

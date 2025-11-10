@@ -116,22 +116,20 @@ public class SixSevenZombieModel<T extends LivingEntityRenderState> extends Enti
         float leftArmRotation;
         float rightArmRotation;
 
-        if (animationProgress < 0.333F) {
-            // First third: left -70 to -120, right -120 to -70
-            float progress = animationProgress / 0.333F;
-            leftArmRotation = Mth.lerp(progress, -70, -120);
-            rightArmRotation = Mth.lerp(progress, -120, -70);
-        } else if (animationProgress < 0.666F) {
-            // Second third: left -120 to -70, right -70 to -120
-            float progress = (animationProgress - 0.333F) / 0.333F;
-            leftArmRotation = Mth.lerp(progress, -120, -70);
-            rightArmRotation = Mth.lerp(progress, -70, -120);
-        } else {
-            // Final third: left -70 to -120, right -120 to -70
-            float progress = (animationProgress - 0.666F) / 0.334F;
-            leftArmRotation = Mth.lerp(progress, -70, -120);
-            rightArmRotation = Mth.lerp(progress, -120, -70);
-        }
+        // java
+        // 6-keyframe smooth interpolation to match 2.5s loop (50 ticks)
+        float[] leftKeys  = new float[] { -90f, -70f, -120f, -70f, -120f, -90f };
+        float[] rightKeys = new float[] { -90f, -120f, -70f, -120f, -70f, -90f };
+
+        float t = animationProgress * (leftKeys.length - 1); // maps to 0..5
+        int idx = Math.min((int) t, leftKeys.length - 2);
+        float local = t - idx;
+
+        // Cosine ease-in-out for smooth transitions
+        float eased = 0.5F - 0.5F * Mth.cos(local * (float)Math.PI);
+
+        leftArmRotation  = Mth.lerp(eased, leftKeys[idx],  leftKeys[idx + 1]);
+        rightArmRotation = Mth.lerp(eased, rightKeys[idx], rightKeys[idx + 1]);
 
         this.leftArm.xRot = leftArmRotation * ((float)Math.PI / 180F);
         this.rightArm.xRot = rightArmRotation * ((float)Math.PI / 180F);

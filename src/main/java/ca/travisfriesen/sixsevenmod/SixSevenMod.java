@@ -1,31 +1,26 @@
 package ca.travisfriesen.sixsevenmod;
 
+import ca.travisfriesen.sixsevenmod.mob.SixSevenMobs;
+import ca.travisfriesen.sixsevenmod.mob.SixSevenMobSpawning;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.fabricmc.fabric.api.event.player.PlayerPickItemEvents;
-
-import net.fabricmc.fabric.impl.resource.loader.FabricResource;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.PortalProcessor;
 import net.minecraft.world.entity.Relative;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.Vec3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashSet;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -45,7 +40,10 @@ public class SixSevenMod implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+
 		LOGGER.info("Hello Fabric world!");
+        SixSevenMobs.registerSixSevenMobs();
+		SixSevenMobSpawning.addSpawns();
         eventHandler();
 	}
 
@@ -66,12 +64,16 @@ public class SixSevenMod implements ModInitializer {
                     UUID playerId = player.getUUID();
                     if (has67 && !triggeredPlayers.contains(playerId)) {
                         // first time reaching the state -> perform action
-                        player.displayClientMessage(Component.literal("You reached a stack of 67!"), false);
+//                        player.displayClientMessage(Component.literal("You reached a stack of 67!"), false);
                         ServerLevel targetLevel = server.getLevel(SIX_SEVEN_DIMENSION);
 
                         if (targetLevel != null) {
                             BlockPos spawn = player.blockPosition();
-                            Vec3 destPos = new Vec3(spawn.getX() + 0.5, spawn.getY(), spawn.getZ() + 0.5);
+                            int height = spawn.getY();
+                            if (!targetLevel.getBlockState(spawn).isAir()) {
+                                height = targetLevel.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, spawn).getY();
+                            }
+                            Vec3 destPos = new Vec3(spawn.getX() + 0.5, height, spawn.getZ() + 0.5);
                             float yaw = player.getYRot();
                             float pitch = player.getXRot();
 
